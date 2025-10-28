@@ -1,6 +1,4 @@
 /* eslint-disable no-unused-vars */
-
-
 import { motion } from "framer-motion";
 
 function Projects() {
@@ -35,16 +33,20 @@ function Projects() {
   ];
 
   return (
-    <section
+    <motion.section
       id="projects"
       className="py-20 border-t border-gray-200 dark:border-gray-700"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+      viewport={{ once: true, amount: 0.2 }}
     >
       <div className="max-w-6xl mx-auto text-center px-4">
         <motion.h2
           className="text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-12"
-          initial={{ opacity: 0, y: -40 }}
+          initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
           My Projects
@@ -55,10 +57,10 @@ function Projects() {
             <motion.div
               key={project.title}
               className="bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden"
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              viewport={{ once: true, amount: 0.2 }}
             >
               <img
                 src={project.image}
@@ -95,7 +97,7 @@ function Projects() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
