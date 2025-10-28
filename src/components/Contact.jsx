@@ -1,17 +1,9 @@
 /* eslint-disable no-unused-vars */
-import { motion } from "framer-motion";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 function Contact() {
-  const [sent, setSent] = useState(false);
-
-  const handleSubmit = (e) => {
-    // Let Formspree handle the submission
-    setSent(true);
-
-    // Hide success message after 4 seconds
-    setTimeout(() => setSent(false), 4000);
-  };
+  const [showForm, setShowForm] = useState(false);
 
   return (
     <motion.section
@@ -19,128 +11,114 @@ function Contact() {
       className="py-20 border-t border-gray-200 dark:border-gray-700"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
+      transition={{ duration: 1 }}
+      viewport={{ once: false, amount: 0.2 }}
     >
-      <motion.div
-        className="max-w-3xl mx-auto text-center px-4"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.8 }}
-        viewport={{ once: true }}
-      >
+      <div className="max-w-3xl mx-auto text-center px-4 space-y-8">
         <motion.h2
-          className="text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-8"
-          initial={{ y: -20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
+          className="text-4xl font-bold text-indigo-600 dark:text-indigo-400"
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          Get In Touch
+          Let’s Connect
         </motion.h2>
 
         <motion.p
-          className="text-gray-600 dark:text-gray-300 text-lg mb-10"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.7 }}
+          className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.2, duration: 1 }}
         >
-          I’m always open to discussing new projects, creative ideas, or opportunities 
-          to be part of your visions. Feel free to drop a message below!
+          I’d love to hear from you! Whether it’s a question, collaboration, or just to say hi —
+          choose your preferred way to reach out.
         </motion.p>
 
-        <motion.form
-          action="https://formspree.io/f/mrboekvg"
-          method="POST"
-          onSubmit={handleSubmit}
-          className="space-y-6 bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-md relative"
-          initial={{ scale: 0.9, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          viewport={{ once: true }}
+        {/* Two Contact Options */}
+        <motion.div
+          className="flex flex-col sm:flex-row justify-center gap-6 mt-8"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 bg-transparent"
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 bg-transparent"
-              required
-            />
-          </div>
-
-          <textarea
-            name="message"
-            rows="5"
-            placeholder="Your Message"
-            className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 bg-transparent"
-            required
-          ></textarea>
-
           <motion.button
-            type="submit"
-            className="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition relative"
+            onClick={() => setShowForm(!showForm)}
+            className="px-8 py-4 bg-indigo-600 text-white rounded-lg shadow-lg hover:bg-indigo-700 transition"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            {sent ? "Sent ✅" : "Send Message"}
+            {showForm ? "Close Form" : "Send Email"}
           </motion.button>
 
-          {sent && (
-            <motion.p
-              className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 text-green-600 dark:text-green-400 font-semibold"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              Message sent successfully!
-            </motion.p>
-          )}
-        </motion.form>
-
-        {/* Social Icons */}
-        <motion.div
-          className="flex justify-center mt-12 space-x-6 text-2xl"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          {[
-            {
-              href: "https://github.com/yourusername",
-              icon: "fa-brands fa-github",
-            },
-            {
-              href: "https://linkedin.com/in/yourusername",
-              icon: "fa-brands fa-linkedin",
-            },
-            {
-              href: "mailto:your@email.com",
-              icon: "fa-solid fa-envelope",
-            },
-          ].map((item, index) => (
-            <motion.a
-              key={index}
-              href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-indigo-500 transition"
-              whileHover={{ scale: 1.2, rotate: 10, y: -5 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <i className={item.icon}></i>
-            </motion.a>
-          ))}
+          <motion.a
+            href="https://www.linkedin.com/in/debasis-hasdah-862004343/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-8 py-4 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-600 hover:text-white transition shadow-lg"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Connect on LinkedIn
+          </motion.a>
         </motion.div>
-      </motion.div>
+
+        {/* Email Form (Toggles On Click) */}
+        {showForm && (
+          <motion.form
+            className="mt-10 space-y-6 max-w-md mx-auto bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            action="https://formspree.io/f/yourFormID" // 👈 replace with your Formspree endpoint
+            method="POST"
+          >
+            <div>
+              <label className="block text-left text-gray-700 dark:text-gray-300 font-medium">
+                Name
+              </label>
+              <input
+                type="text"
+                name="name"
+                required
+                className="w-full mt-2 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label className="block text-left text-gray-700 dark:text-gray-300 font-medium">
+                Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                required
+                className="w-full mt-2 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label className="block text-left text-gray-700 dark:text-gray-300 font-medium">
+                Message
+              </label>
+              <textarea
+                name="message"
+                rows="4"
+                required
+                className="w-full mt-2 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+              ></textarea>
+            </div>
+
+            <motion.button
+              type="submit"
+              className="w-full py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Send Message
+            </motion.button>
+          </motion.form>
+        )}
+      </div>
     </motion.section>
   );
 }
