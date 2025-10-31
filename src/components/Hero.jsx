@@ -116,7 +116,7 @@ function Hero() {
           viewport={{ once: false }}
         >
           <img
-            src="me3.png"
+            src="public/deba1.jpg"
             alt="Profile"
             className="w-72 h-72 md:w-96 md:h-96 object-cover rounded-full border border-white/25 shadow-[0_0_50px_rgba(139,92,246,0.4)]"
           />
