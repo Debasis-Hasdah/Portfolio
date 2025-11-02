@@ -28,7 +28,7 @@ function Projects() {
       description:
         "A to-do list app that helps organize daily tasks with local storage and dark mode support.",
       image:
-        "https://s3-alpha.figma.com/hub/file/2614715887/2f4f0e71-9647-4ef6-a5e7-86aa7d7b5ffd-cover.png",
+        "https://www.shutterstock.com/shutterstock/photos/2155233345/display_1500/stock-vector-schedule-app-task-manager-ui-template-with-project-timeline-time-optimization-and-task-management-2155233345.jpg",
       github: "https://github.com/yourusername/task-manager",
       demo: "#",
     },
@@ -135,7 +135,7 @@ function Projects() {
   return (
     <motion.section
       id="projects"
-      className="py-24 relative overflow-hidden"
+      className="py-24 relative overflow-hidden bg-gradient-to-b from-[#0a0020] via-[#120040] to-[#0a001a]"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
