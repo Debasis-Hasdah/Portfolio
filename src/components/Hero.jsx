@@ -49,7 +49,7 @@ function Hero() {
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
           >
-            Hi, I’m Dev 👋
+            Hi, I’m Debasis 👋
           </motion.h1>
 
           {/* Typing Animation */}
