@@ -26,7 +26,7 @@ function Footer() {
         {/* Social Links */}
         <div className="flex space-x-6 text-2xl">
           <motion.a
-            href="https://github.com/yourusername"
+            href="https://github.com/Debasis-Hasdah"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-600 dark:text-gray-400 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors"
@@ -36,7 +36,7 @@ function Footer() {
           </motion.a>
 
           <motion.a
-            href="https://linkedin.com/in/yourusername"
+            href="https://www.linkedin.com/in/debasis-hasdah-862004343/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
