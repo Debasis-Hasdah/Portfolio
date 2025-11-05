@@ -46,7 +46,7 @@ function Footer() {
           </motion.a>
 
           <motion.a
-            href="https://instagram.com/yourusername"
+            href="https://www.instagram.com/debasis_hasdah/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-600 dark:text-gray-400 hover:text-pink-500 dark:hover:text-pink-400 transition-colors"
