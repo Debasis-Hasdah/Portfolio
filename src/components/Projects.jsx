@@ -24,7 +24,7 @@ function Projects() {
       demo: "#",
     },
     {
-      title: "Task Manager",
+      title: "Face Attendance system",
       description:
         "A to-do list app that helps organize daily tasks with local storage and dark mode support.",
       image:
